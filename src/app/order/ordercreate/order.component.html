@@ -1,0 +1,42 @@
+<div class="container mt-5 offset-lg-2 col-lg-8 offset-lg-2">
+    <h2 class='text-center'>Add Items</h2>
+    <form [formGroup]='orderForm' (ngSubmit)='order(orderForm.value)'>
+        <div class="form-group">
+            <label for="orderName">Item &nbsp;&nbsp;&nbsp;</label>
+            <input type="text" formControlName='item' id='orderName' class='form-control'
+                [ngClass]="{'is-invalid': submitted && f.item.errors}">
+            <div *ngIf='submitted && f.item.errors' class="invalid-feedback">
+                <div *ngIf='f.item.errors.required'>Enter the item!</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <div class="form-group">
+                    <label for="price">Price in Rs.</label>
+                    <input type="number" formControlName='price' id='price' class='form-control'
+                        [ngClass]="{'is-invalid': submitted && f.price.errors}">
+                    <div *ngIf='submitted && f.price.errors' class='invalid-feedback'>
+                        <div *ngIf='f.price.errors.required'>Enter the Price!</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="form-group">
+                    <label for="quantity">Quantity</label>
+                    <input type="number" formControlName='quantity' id='quantity' class='form-control'
+                        [ngClass]="{'is-invalid': submitted && f.quantity.errors}">
+                    <div *ngIf='submitted && f.quantity.errors' class='invalid-feedback'>
+                        <div *ngIf='f.quantity.errors.required'>Enter the Quantity!</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class='text-center mt-5'>
+            <button class='btn btn-warning'>Add</button>
+        </div>
+    </form>
+    <div class='text-center mt-4'>
+        <a routerLink="/list" class='btn btn-primary'>Order List</a>
+    </div>
+</div>

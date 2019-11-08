@@ -1,0 +1,26 @@
+<div class="container mt-5 offset-lg-2 col-lg-8 offset-lg-2">
+    <h2 class='text-center'>Edit Order</h2>
+    <form name='update' #update='ngForm' (ngSubmit)='updateOrder(update.value)'>
+        <div class="form-group">
+            <label>Item &nbsp;&nbsp;&nbsp;</label>
+            <input type="text" name='item' [(ngModel)]="display.item" class='form-control'>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <div class="form-group">
+                    <label>Price in Rs.</label>
+                    <input type="number" name='price' [(ngModel)]="display.price" class='form-control'>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="form-group">
+                    <label>Quantity</label>
+                    <input type="number" name="quantity" [(ngModel)]="display.quantity"  class='form-control'>
+                </div>
+            </div>
+        </div>
+        <div class='text-center mt-5 form-group'>
+            <button class='btn btn-warning sub'>Update</button>
+        </div>
+    </form>
+</div>

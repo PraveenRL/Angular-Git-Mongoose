@@ -1,0 +1,9 @@
+#productId{
+    width: 10%;
+}
+.aDelete:hover{
+    color: red !important;
+}
+.thIcon{
+    width: 10%;
+}

@@ -1,0 +1,27 @@
+<div class="container mt-5">
+    <h2 class='text-center text-primary'>Order Details</h2>
+    <div class='text-right'>
+        <button routerLink='/order' class='btn btn-info'>Add Orders</button>
+    </div>
+    <table class='table text-center mt-3'>
+        <thead class='bg-light'>
+            <tr>
+                <th id='productId'>Order Id</th>
+                <th>Item</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th colspan="2" class="thIcon">Action</th>
+            </tr>
+        </thead>
+        <tbody *ngFor='let data of bindData; let i = index'>
+            <tr>
+                <td>{{i+1}}</td>
+                <td>{{data.item}}</td>
+                <td>{{data.price}}</td>
+                <td>{{data.quantity}}</td>
+                <td><a [routerLink]="['/edit/', data._id]"><i class="material-icons">edit</i></a></td>
+                <td><a class="aDelete" (click)="delete(data._id)"><i class="material-icons">delete</i></a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
