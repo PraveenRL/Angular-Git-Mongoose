@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ItemService } from '../item.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-signup',
@@ -37,8 +38,11 @@ export class SignupComponent implements OnInit {
     else {
       this.item.signPost(value).subscribe(res => {
         console.log(value)
-        alert('SignUp Successfully')
-        // this.router.navigate(['/signin']);
+        Swal.fire(
+          'SignUp Successful!',
+          '',
+          'success'
+        )
       })
     }
   }
