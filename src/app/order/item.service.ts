@@ -25,8 +25,8 @@ export class ItemService {
   }
   
   getOrder(){
-    const value={phone:localStorage.getItem('phoneId')}
-    return this.http.post(this.baseUrl + 'bill', value)
+    const value={phone:localStorage.getItem('phoneId')}   
+    return this.http.post(this.baseUrl + 'bill', value)   //Used as Get
     .pipe(map(data => this.orderData = data));
   }
 
