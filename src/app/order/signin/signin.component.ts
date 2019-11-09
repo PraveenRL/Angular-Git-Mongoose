@@ -1,4 +1,4 @@
-import { Component, OnChanges } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ItemService } from '../item.service';
 import Swal from 'sweetalert2';
@@ -21,16 +21,16 @@ export class SigninComponent {
   ) { }
 
   onSubmit(value) {
-    this.item.signIn(value).subscribe(res => {
+    this.item.signGet(value).subscribe(res => {
       this.sign = res;
-      if(this.sign.length >= 1){
+      console.log(value)
+      if(this.sign.phone == value.phone){
         Swal.fire(
           'SignIn Successful!',
           '',
           'success'
-
         )
-        localStorage.setItem('phoneId', this.sign[0].phone);
+        localStorage.setItem('phoneId', this.sign.phone);
         this.route.navigate(['/list']);
       }
       else{

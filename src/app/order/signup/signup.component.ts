@@ -37,7 +37,7 @@ export class SignupComponent implements OnInit {
     }
     else {
       this.item.signPost(value).subscribe(res => {
-        console.log(value)
+        // console.log(value)
         Swal.fire(
           'SignUp Successful!',
           '',

@@ -45,21 +45,8 @@ export class ItemService {
       .pipe(map(data => this.sign = data))
   }
 
-  signIn(value){
+  signGet(value){
     return this.http.post(this.baseUrl + 'sign/signin', value)
       .pipe(map(data => this.sign = data))
   }
-
-  signgets(id){
-    let url = this.baseUrl + 'sign/' + id
-    return this.http.get(url)
-      .pipe(map(data => this.sign = data));
-  }
-
-  signget(){
-    let url = this.baseUrl + 'sign'
-    return this.http.get(url)
-      .pipe(map(data => this.sign = data));
-  }
-
 }

@@ -11,6 +11,7 @@ import { AppRoutingModule } from '../app-routing.module';
 import { SignupComponent } from './signup/signup.component';
 import { SigninComponent } from './signin/signin.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { AuthService } from '../shared/auth.service';
 
 
  
@@ -30,6 +31,6 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [ItemService]
+  providers: [ItemService, AuthService]
 })
 export class OrderModule { }
