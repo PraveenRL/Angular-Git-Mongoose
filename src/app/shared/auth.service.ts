@@ -6,7 +6,6 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import Swal from 'sweetalert2';
 
-
 @Injectable({
   providedIn: 'root'
 })

@@ -13,39 +13,38 @@ export class ItemService {
 
   constructor(public http: HttpClient) { }
 
-  postOrder(value){
+  postOrder(value) {
     return this.http.post(this.baseUrl + 'bill/create', value)
       .pipe(map(data => this.orderData = data));
   }
 
-  getOrders(id){
-    let url = this.baseUrl + 'bill/'+ id
+  getOrders(id) {
+    let url = this.baseUrl + 'bill/' + id
     return this.http.get(url)
       .pipe(map(data => this.orderData = data));
   }
-  
-  getOrder(){
-    const value={phone:localStorage.getItem('phoneId')}   
-    return this.http.post(this.baseUrl + 'bill', value)   //Used as Get
-    .pipe(map(data => this.orderData = data));
+
+  getOrder() {
+    return this.http.get(this.baseUrl + 'bill')   //Used as Get
+      .pipe(map(data => this.orderData = data));
   }
 
-  updateOrder(id, value){
+  updateOrder(id, value) {
     return this.http.put(this.baseUrl + 'bill/' + id, value)
       .pipe(map(data => this.orderData = data));
   }
 
-  deleteOrder(value){
+  deleteOrder(value) {
     return this.http.delete(this.baseUrl + 'bill/' + value)
       .pipe(map(data => this.orderData = data));
   }
 
-  signPost(value){
+  signPost(value) {
     return this.http.post(this.baseUrl + 'sign', value)
       .pipe(map(data => this.sign = data))
   }
 
-  signGet(value){
+  signGet(value) {
     return this.http.post(this.baseUrl + 'sign/signin', value)
       .pipe(map(data => this.sign = data))
   }

@@ -17,27 +17,26 @@ export class ListComponent implements OnInit {
 
   constructor(
     private item: ItemService,
-    private auth: AuthService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
   ) {
   }
 
-  ngOnInit() {
-    let id = this.activatedRoute.snapshot.paramMap.get('id');
-    this.auth.getUserProfile(id).subscribe(res => {
-      this.bindData = res.msg
-      console.log(this.bindData);
-    })
-  }
-
   // ngOnInit() {
-  //   // this.phone = JSON.parse(localStorage.getItem('phoneId'))
-  //   this.item.getOrder().subscribe(res => { 
-  //     this.bindData = res;
+  //   let id = this.activatedRoute.snapshot.paramMap.get('id');
+  //   this.auth.getUserProfile(id).subscribe(res => {
+  //     this.bindData = res.msg
   //     console.log(this.bindData);
   //   })
-  // } 
+  // }
+
+  ngOnInit() {
+    // this.phone = JSON.parse(localStorage.getItem('phoneId'))
+    this.item.getOrder().subscribe(res => { 
+      this.bindData = res;
+      console.log(this.bindData);
+    })
+  } 
 
   delete(value) {
     Swal.fire({
