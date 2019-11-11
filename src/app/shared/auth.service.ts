@@ -4,6 +4,7 @@ import { HttpHeaders, HttpClient, HttpErrorResponse } from '@angular/common/http
 import { Router } from '@angular/router';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+import Swal from 'sweetalert2';
 
 
 @Injectable({
@@ -12,7 +13,7 @@ import { catchError, map } from 'rxjs/operators';
 export class AuthService {
   endpoint: string = 'http://localhost:4000/api/';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
-  currentUser = {}
+  currentUser: any;
   constructor(
     private http: HttpClient,
     public route: Router
@@ -20,29 +21,31 @@ export class AuthService {
 
   //SignUp
   signUp(user: User): Observable<any> {
-    let api = `${this.endpoint}/sign`;
+    let api = `${this.endpoint}sign`;
     return this.http.post(api, user)
       .pipe(catchError(this.handleError))
   }
 
   signIn(user: User) {
-    return this.http.post(`${this.endpoint}/signin`, user)
+    return this.http.post<any>(`${this.endpoint}sign/signauth`, user)
       .subscribe((res: any) => {
         localStorage.setItem('access_token', res.token)
         this.getUserProfile(res._id).subscribe((res) => {
+          Swal.fire(
+            'SignIn Success',
+            '',
+            'success'
+          )
           this.currentUser = res;
-          this.route.navigate(['bill' + res.msg._id])
+          this.route.navigate(['/order'])
         })
       })
   }
 
   getUserProfile(id): Observable<any> {
-    let api = `${this.endpoint}/bill/${id}`;
+    let api = `${this.endpoint}sign/${id}`;
     return this.http.get(api, { headers: this.headers })
-      .pipe(map((res: Response) => {
-        return res || {}
-      }),
-        catchError(this.handleError)
+      .pipe(map((res => this.currentUser = res))
       )
   }
 
@@ -55,9 +58,9 @@ export class AuthService {
     return (authToken !== null) ? true : false;
   }
 
-  doLogout(){
+  doLogout() {
     let removeToken = localStorage.removeItem('access_token');
-    if(removeToken == null){
+    if (removeToken == null) {
       this.route.navigate(['signin']);
     }
   }
@@ -66,10 +69,10 @@ export class AuthService {
   handleError(error: HttpErrorResponse) {
     let msg = ''
     if (error.error instanceof ErrorEvent) {
-      msg = error.error.message;              //Client side error
+      msg = error.error.message;                                      //Client side error
     }
     else {
-      msg = `Error Code: ${error.status}\nMessage: ${error.message}`
+      msg = `Error Code: ${error.status}\nMessage: ${error.message}`  //Server side error
     }
     return throwError(msg)
   }

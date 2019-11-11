@@ -1,1 +1,4 @@
+<div class='text-right m-3'>
+    <button (click)='logout()' *ngIf='this.auth.isLoggedIn' class='btn btn-danger'>Logout</button>
+</div>
 <router-outlet></router-outlet>

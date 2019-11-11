@@ -37,7 +37,7 @@ export class OrderComponent implements OnInit {
       return;
     }
     else {
-      value.phone = JSON.parse(localStorage.getItem('phoneId'))
+      // value.phone = JSON.parse(localStorage.getItem('phoneId'))
       this.item.postOrder(value).subscribe(res => {
         console.log(value);
         Swal.fire(

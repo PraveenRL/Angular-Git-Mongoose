@@ -6,11 +6,12 @@ import { EditorderComponent } from './order/editorder/editorder.component';
 import { SigninComponent } from './order/signin/signin.component';
 import { SignupComponent } from './order/signup/signup.component';
 import { PageNotFoundComponent } from './order/page-not-found/page-not-found.component';
+import { AuthGuard } from './shared/auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'signup', pathMatch: 'full' },
   { path: 'order', component: OrderComponent },
-  { path: 'list', component: ListComponent },
+  { path: 'list/:id', component: ListComponent, canActivate:[AuthGuard] },
   { path: 'edit/:id', component: EditorderComponent },
   { path: 'signin', component: SigninComponent },
   { path: 'signup', component: SignupComponent },

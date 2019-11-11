@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { ItemService } from '../item.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { AuthService } from 'src/app/shared/auth.service';
+import { ItemService } from '../item.service';
 
 @Component({
   selector: 'app-signup',
@@ -15,6 +16,7 @@ export class SignupComponent implements OnInit {
   id: any;
   constructor(
     private item: ItemService,
+    private auth: AuthService,
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router
