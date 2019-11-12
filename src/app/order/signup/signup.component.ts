@@ -38,7 +38,7 @@ export class SignupComponent implements OnInit {
       return;
     }
     else {
-      this.item.signPost(value).subscribe(res => {
+      this.auth.signUp(value).subscribe(res => {
         // console.log(value)
         Swal.fire(
           'SignUp Successful!',

@@ -22,14 +22,6 @@ export class ListComponent implements OnInit {
   ) {
   }
 
-  // ngOnInit() {
-  //   let id = this.activatedRoute.snapshot.paramMap.get('id');
-  //   this.auth.getUserProfile(id).subscribe(res => {
-  //     this.bindData = res.msg
-  //     console.log(this.bindData);
-  //   })
-  // }
-
   ngOnInit() {
     // this.phone = JSON.parse(localStorage.getItem('phoneId'))
     this.item.getOrder().subscribe(res => { 

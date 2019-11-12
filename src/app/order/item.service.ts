@@ -19,23 +19,23 @@ export class ItemService {
   }
 
   getOrders(id) {
-    let url = this.baseUrl + 'bill/' + id
+    let url = this.baseUrl + 'bill/listid/' + id
     return this.http.get(url)
       .pipe(map(data => this.orderData = data));
   }
 
   getOrder() {
-    return this.http.get(this.baseUrl + 'bill')   //Used as Get
+    return this.http.get(this.baseUrl + 'bill/list')   //Used as Get
       .pipe(map(data => this.orderData = data));
   }
 
   updateOrder(id, value) {
-    return this.http.put(this.baseUrl + 'bill/' + id, value)
+    return this.http.put(this.baseUrl + 'bill/edit/' + id, value)
       .pipe(map(data => this.orderData = data));
   }
 
   deleteOrder(value) {
-    return this.http.delete(this.baseUrl + 'bill/' + value)
+    return this.http.delete(this.baseUrl + 'bill/delete/' + value)
       .pipe(map(data => this.orderData = data));
   }
 

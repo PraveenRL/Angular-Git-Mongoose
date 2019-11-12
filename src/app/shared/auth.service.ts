@@ -10,7 +10,7 @@ import Swal from 'sweetalert2';
   providedIn: 'root'
 })
 export class AuthService {
-  endpoint: string = 'http://localhost:4000/api/';
+  endpoint: string = 'http://localhost:4000/sign/';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
   currentUser: any;
   constructor(
@@ -20,13 +20,13 @@ export class AuthService {
 
   //SignUp
   signUp(user: User): Observable<any> {
-    let api = `${this.endpoint}sign`;
+    let api = `${this.endpoint}signup`;
     return this.http.post(api, user)
       .pipe(catchError(this.handleError))
   }
 
   signIn(user: User) {
-    return this.http.post<any>(`${this.endpoint}sign/signauth`, user)
+    return this.http.post<any>(`${this.endpoint}signin`, user)
       .subscribe((res: any) => {
         localStorage.setItem('access_token', res.token)
         this.getUserProfile(res._id).subscribe((res) => {
@@ -42,7 +42,7 @@ export class AuthService {
   }
 
   getUserProfile(id): Observable<any> {
-    let api = `${this.endpoint}sign/${id}`;
+    let api = `${this.endpoint}/access/${id}`;
     return this.http.get(api, { headers: this.headers })
       .pipe(map((res => this.currentUser = res))
       )
