@@ -8,7 +8,7 @@ import { map } from 'rxjs/operators';
 export class ItemService {
   orderData: any;
   sign: any
-  baseUrl = 'http://localhost:4000/api/';
+  baseUrl = 'https://orderapps.herokuapp.com/api/';
   // http://localhost:4200
 
   constructor(public http: HttpClient) { }

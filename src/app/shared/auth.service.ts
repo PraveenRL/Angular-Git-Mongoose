@@ -10,7 +10,7 @@ import Swal from 'sweetalert2';
   providedIn: 'root'
 })
 export class AuthService {
-  endpoint: string = 'http://localhost:4000/sign/';
+  endpoint: string = 'https://orderapps.herokuapp.com/sign/';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
   currentUser: any;
   constructor(
